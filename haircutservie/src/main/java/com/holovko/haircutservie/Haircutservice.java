@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HaircutserviceApplication {
+public class Haircutservice {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HaircutserviceApplication.class, args);
+
+		SpringApplication.run(Haircutservice.class, args);
 	}
 
 }
