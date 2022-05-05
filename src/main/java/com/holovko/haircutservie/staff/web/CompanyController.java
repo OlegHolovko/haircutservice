@@ -1,17 +1,17 @@
-package com.holovko.haircutservie.stuff.web;
+package com.holovko.haircutservie.staff.web;
 
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/companies")
 public class CompanyController {
-    @GetMapping(value = "")
+    @GetMapping("")
     public String list() {
         return "List of companies";
     }
 
-    @GetMapping(value = "/{companyId}")
-    public String getById(@PathVariable(value = "companyId") Long companyId) {
+    @GetMapping("/{companyId}")
+    public String getById(@PathVariable Long companyId) {
         return "Company data";
     }
 
@@ -21,12 +21,12 @@ public class CompanyController {
     }
 
     @PutMapping(value = "/{companyId}", produces = "application/json")
-    public String update(@PathVariable(value = "companyId") Long companyId, @RequestBody CompanyDTO companyDTO) {
+    public String update(@PathVariable Long companyId, @RequestBody CompanyDTO companyDTO) {
         return "Company updated";
     }
 
-    @DeleteMapping(value = "/{companyId}")
-    public String delete(@PathVariable(value = "companyId") Long companyId) {
+    @DeleteMapping("/{companyId}")
+    public String delete(@PathVariable Long companyId) {
         return "Company deleted";
     }
 }
