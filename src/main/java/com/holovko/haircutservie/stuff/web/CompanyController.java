@@ -16,12 +16,12 @@ public class CompanyController {
     }
 
     @PostMapping(value = "", produces = "application/json")
-    public String create(@RequestBody Object companyDTO) {
+    public String create(@RequestBody CompanyDTO companyDTO) {
         return "Company crated";
     }
 
     @PutMapping(value = "/{companyId}", produces = "application/json")
-    public String update(@PathVariable(value = "companyId") Long companyId, @RequestBody Object companyDTO) {
+    public String update(@PathVariable(value = "companyId") Long companyId, @RequestBody CompanyDTO companyDTO) {
         return "Company updated";
     }
 
@@ -30,3 +30,5 @@ public class CompanyController {
         return "Company deleted";
     }
 }
+
+
