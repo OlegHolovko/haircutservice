@@ -24,7 +24,8 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core:8.4.4'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.5.2'
 	implementation 'org.springdoc:springdoc-openapi-data-rest:1.5.2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
