@@ -1,4 +1,4 @@
-package com.holovko.haircutservie.staff.web;
+package com.holovko.haircutservie.module.staff.web;
 
 import javax.validation.constraints.NotNull;
 
