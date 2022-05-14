@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "activity_logs")
 @Getter
@@ -14,5 +14,17 @@ import javax.persistence.Table;
 @AllArgsConstructor
 
 public class ActivityLog extends BaseEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
 
+    @Column(name="type")
+    private String type;
+
+    @Column(name="description")
+    private String description;
+
+    @Column(name="is_viewed")
+    private Boolean isViewed;
 }
