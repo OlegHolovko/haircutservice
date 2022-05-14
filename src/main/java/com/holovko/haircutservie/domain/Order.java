@@ -29,10 +29,6 @@ public class Order extends BaseEntity{
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private ClientDetail clientDetail;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "request_id", referencedColumnName = "id")
     private OrderRequest orderRequest;
 
