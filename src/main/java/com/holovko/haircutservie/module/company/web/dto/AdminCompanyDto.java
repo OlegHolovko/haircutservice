@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompanyDTO {
+public class AdminCompanyDto{
     private Long id;
     private String name;
 }
