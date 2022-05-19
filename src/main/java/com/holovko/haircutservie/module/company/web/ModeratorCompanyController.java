@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/companies")
-public class GuestCompanyController {
+public class ModeratorCompanyController {
     private final GuestCompanyService guestCompanyService;
 
-    public GuestCompanyController(GuestCompanyService guestCompanyService) {
+    public ModeratorCompanyController(GuestCompanyService guestCompanyService) {
         this.guestCompanyService = guestCompanyService;
     }
 
