@@ -1,41 +1,34 @@
 package com.holovko.haircutservie.module.company.web;
 
-import com.holovko.haircutservie.module.company.service.GuestCompanyService;
-import com.holovko.haircutservie.module.company.web.dto.GuestCompanyDto;
+import com.holovko.haircutservie.module.company.service.AdminCompanyService;
+import com.holovko.haircutservie.module.company.web.dto.AdminCompanyDto;
+import com.holovko.haircutservie.module.company.web.mapper.AdminCompanyMapper;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping(value = "/companies")
-public class AdminCompanyController {
-    private final GuestCompanyService guestCompanyService;
+import java.util.List;
 
-    public AdminCompanyController(GuestCompanyService guestCompanyService) {
-        this.guestCompanyService = guestCompanyService;
+@RestController
+@RequestMapping(value = "/admin/companies")
+public class AdminCompanyController {
+    private final AdminCompanyService adminCompanyService;
+    private final AdminCompanyMapper adminCompanyMapper;
+
+    public AdminCompanyController(AdminCompanyService adminCompanyService, AdminCompanyMapper adminCompanyMapper) {
+        this.adminCompanyService = adminCompanyService;
+        this.adminCompanyMapper = adminCompanyMapper;
     }
 
     @GetMapping("")
-    public String list() {
-        return "List of companies";
+    public List<AdminCompanyDto> list() {
+        return adminCompanyService.list()
+                .stream()
+                .map(adminCompanyMapper::fromCompany)
+                .toList();
     }
 
     @GetMapping("/{companyId}")
-    public String getById(@PathVariable Long companyId) {
-        return "Company data";
-    }
-
-    @PostMapping(value = "", produces = "application/json")
-    public String create(@RequestBody GuestCompanyDto companyDto) {
-        return guestCompanyService.create(companyDto);
-    }
-
-    @PutMapping(value = "/{companyId}", produces = "application/json")
-    public String update(@PathVariable Long companyId, @RequestBody GuestCompanyDto companyDto) {
-        return "Company updated";
-    }
-
-    @DeleteMapping("/{companyId}")
-    public String delete(@PathVariable Long companyId) {
-        return "Company deleted";
+    public AdminCompanyDto getById(@PathVariable Long companyId) {
+        return adminCompanyMapper.fromCompany(adminCompanyService.read(companyId));
     }
 }
 
