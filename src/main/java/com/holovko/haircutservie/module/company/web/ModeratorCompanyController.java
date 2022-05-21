@@ -20,7 +20,7 @@ public class ModeratorCompanyController {
 
     @GetMapping("")
     public List<ModeratorCompanyDto> list() {
-        return moderatorCompanyService.list()
+        return moderatorCompanyService.list(moderatorCompanyService.getCompanyRepository())
                 .stream()
                 .map(moderatorCompanyMapper::fromCompany)
                 .toList();

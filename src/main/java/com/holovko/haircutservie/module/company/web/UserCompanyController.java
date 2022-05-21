@@ -20,7 +20,7 @@ public class UserCompanyController {
 
     @GetMapping("")
     public List<UserCompanyDto> list() {
-        return userCompanyService.list()
+        return userCompanyService.list(userCompanyService.getCompanyRepository())
                 .stream()
                 .map(userCompanyMapper::fromCompany)
                 .toList();

@@ -1,5 +1,6 @@
 package com.holovko.haircutservie.module.company.web;
 
+import com.holovko.haircutservie.module.company.repository.CompanyRepository;
 import com.holovko.haircutservie.module.company.service.GuestCompanyService;
 import com.holovko.haircutservie.module.company.web.dto.GuestCompanyDto;
 import com.holovko.haircutservie.module.company.web.mapper.GuestCompanyMapper;
@@ -20,7 +21,7 @@ public class GuestCompanyController {
 
     @GetMapping("")
     public List<GuestCompanyDto> list() {
-        return guestCompanyService.list()
+        return guestCompanyService.list(guestCompanyService.getCompanyRepository())
                 .stream()
                 .map(guestCompanyMapper::fromCompany)
                 .toList();
