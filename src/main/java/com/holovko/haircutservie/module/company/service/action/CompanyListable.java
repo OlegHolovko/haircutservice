@@ -1,12 +1,15 @@
 package com.holovko.haircutservie.module.company.service.action;
 
 import com.holovko.haircutservie.domain.Company;
+import com.holovko.haircutservie.module.company.repository.CompanyRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Arrays;
 import java.util.List;
 
 public interface CompanyListable {
-    default List<Company> list(){
+    default List<Company> list(CompanyRepository companyRepository){
+        /*
         Company c1 = new Company();
         c1.setId(1L);
         c1.setName("First");
@@ -17,5 +20,8 @@ public interface CompanyListable {
         c2.setDescription("Description2");
         List<Company> list = Arrays.asList(c1, c2);
         return list;
+
+         */
+        return (List<Company>) companyRepository.findAll();
     }
 }
