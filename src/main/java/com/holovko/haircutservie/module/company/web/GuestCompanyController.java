@@ -19,9 +19,14 @@ public class GuestCompanyController {
         this.guestCompanyMapper = guestCompanyMapper;
     }
 
-    @GetMapping("")
-    public List<GuestCompanyDto> list() {
-        return guestCompanyService.list(guestCompanyService.getCompanyRepository())
+    @GetMapping("/{currentPage}/{pageSize}/{sortBy}/{direction}")
+    public List<GuestCompanyDto> list(
+            @PathVariable Integer currentPage,
+            @PathVariable  Integer pageSize,
+            @PathVariable  String sortBy,
+            @PathVariable String direction
+    ) {
+        return guestCompanyService.list(guestCompanyService.getCompanyRepository(), currentPage, pageSize, sortBy, direction)
                 .stream()
                 .map(guestCompanyMapper::fromCompany)
                 .toList();
