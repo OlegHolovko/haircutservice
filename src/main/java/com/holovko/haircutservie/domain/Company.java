@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
+@Entity
 @Table(name = "companies")
 @Getter
 @Setter
@@ -51,7 +52,7 @@ public class Company extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Company parent;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "parent_id")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "parent")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Company> children;
 
