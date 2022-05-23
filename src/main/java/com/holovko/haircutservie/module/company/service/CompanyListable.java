@@ -1,4 +1,4 @@
-package com.holovko.haircutservie.module.company.service.action;
+package com.holovko.haircutservie.module.company.service;
 
 import com.holovko.haircutservie.domain.Company;
 import com.holovko.haircutservie.module.company.repository.CompanyRepository;
@@ -11,7 +11,8 @@ import org.springframework.data.domain.Sort;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CompanyListable {
+public sealed interface CompanyListable
+        permits AdminCompanyService, GuestCompanyService, ModeratorCompanyService, UserCompanyService{
 
     default List<Company> list(
             CompanyRepository companyRepository,
