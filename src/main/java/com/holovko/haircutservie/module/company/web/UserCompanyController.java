@@ -1,7 +1,7 @@
 package com.holovko.haircutservie.module.company.web;
 
+import com.holovko.haircutservie.module.company.exception.CompanyNotFoundException;
 import com.holovko.haircutservie.module.company.service.UserCompanyService;
-import com.holovko.haircutservie.module.company.web.dto.GuestCompanyDto;
 import com.holovko.haircutservie.module.company.web.dto.UserCompanyDto;
 import com.holovko.haircutservie.module.company.web.mapper.UserCompanyMapper;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +22,30 @@ public class UserCompanyController {
     @GetMapping("/{currentPage}/{pageSize}/{sortBy}/{direction}")
     public List<UserCompanyDto> list(
             @PathVariable Integer currentPage,
-            @PathVariable  Integer pageSize,
-            @PathVariable  String sortBy,
+            @PathVariable Integer pageSize,
+            @PathVariable String sortBy,
             @PathVariable String direction
     ) {
-        return userCompanyService.list(userCompanyService.getCompanyRepository(), currentPage, pageSize, sortBy, direction)
+        return userCompanyService.list(
+                    userCompanyService.getCompanyRepository(),
+                    currentPage,
+                    pageSize,
+                    sortBy,
+                    direction
+                )
                 .stream()
                 .map(userCompanyMapper::fromCompany)
                 .toList();
     }
 
     @GetMapping("/{companyId}")
-    public UserCompanyDto getById(@PathVariable Long companyId) {
-        return userCompanyMapper.fromCompany(userCompanyService.read(companyId));
+    public UserCompanyDto getById(@PathVariable Long companyId) throws CompanyNotFoundException {
+        return userCompanyMapper.fromCompany(
+                userCompanyService.read(
+                        userCompanyService.getCompanyRepository(),
+                        companyId
+                )
+        );
     }
 }
 
