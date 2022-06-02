@@ -5,7 +5,7 @@ import com.holovko.haircutservie.module.company.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public final class ModeratorCompanyService implements CompanyListable, CompanyReadable {
+public final class ModeratorCompanyService implements CompanyListable, CompanyReadable, CompanyEditable {
     private final CompanyRepository companyRepository;
 
     public ModeratorCompanyService(CompanyRepository companyRepository) {

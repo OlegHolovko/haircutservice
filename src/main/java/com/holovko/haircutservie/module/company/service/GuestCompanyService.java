@@ -4,7 +4,7 @@ import com.holovko.haircutservie.module.company.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public final class GuestCompanyService  implements CompanyListable, CompanyReadable {
+public final class GuestCompanyService  implements CompanyListable, CompanyReadable, CompanyEditable {
     private final CompanyRepository companyRepository;
 
     public GuestCompanyService(CompanyRepository companyRepository) {
