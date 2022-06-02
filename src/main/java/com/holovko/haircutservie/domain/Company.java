@@ -2,6 +2,8 @@ package com.holovko.haircutservie.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.holovko.haircutservie.domain.type.BooleanEnum;
+import com.holovko.haircutservie.domain.type.CompanyType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +30,8 @@ public class Company extends BaseEntity{
     private String name;
 
     @Column(name="enabled")
-    private Boolean enabled;
+    @Enumerated(EnumType.STRING)
+    private BooleanEnum enabled = BooleanEnum.UNKNOWN;
 
     @Column(name="filepath")
     private String filepath;
@@ -43,7 +46,8 @@ public class Company extends BaseEntity{
     private String contacts;
 
     @Column(name="type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private CompanyType type = CompanyType.UNKNOWN;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
