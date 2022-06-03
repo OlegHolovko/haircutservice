@@ -5,7 +5,7 @@ import com.holovko.haircutservie.domain.type.BooleanEnum;
 import com.holovko.haircutservie.domain.type.CompanyType;
 import com.holovko.haircutservie.module.company.repository.CompanyRepository;
 
-public sealed interface CompanyEditable
+public sealed interface CompanySaveable
         permits AdminCompanyService, GuestCompanyService, ModeratorCompanyService, UserCompanyService{
     default Company save(CompanyRepository companyRepository,
                          Long companyId,
